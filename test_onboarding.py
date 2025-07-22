@@ -19,7 +19,6 @@ headers_query_server, data_query_server = get_test_data("query_server")
 # ------------------ BASIC TESTS ------------------
 
 class Testarchive:
-    auth_token = None
 
     def test_health_check(self):
         response = call_method.test_get_method("v1/health-check")
@@ -94,8 +93,6 @@ def test_add_storage(testcasename, storageType, name, locationType, mountPath, p
     response = call_method.test_post_method("/v1/manage-storage", params=params, json=body)
     log_request_response(response, request_body=body, params=params)
     assert response.status_code == excepeted_statuscode
-
-
 
 @pytest.mark.parametrize(",".join(headers_fetch_storage), data_fetch_storage, ids=[f"{row[0]}" for row in data_fetch_storage])
 def test_fetch_storage(testcasename, storageId, excepeted_statuscode):
