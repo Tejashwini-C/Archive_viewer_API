@@ -14,56 +14,58 @@ class Payload:
     def meta_data_body(databaseType: str, host: str, port: int, username: str, psswrd: str, databaseName: str) -> dict:
         """Returns JSON body for the metadata API."""
         return {
-          
-                    "databaseType": databaseType,
-                    "host": host,
-                    "port": port,
-                    "username": username,
-                    "psswrd": psswrd,
-                    "databaseName": databaseName
+
+            "databaseType": databaseType,
+            "host": host,
+            "port": port,
+            "username": username,
+            "psswrd": psswrd,
+            "databaseName": databaseName
 
         }
-    
+
     @staticmethod
-    def Super_user_payload(loginType,name,username,psswrd,email):
-        return{
+    def Super_user_payload(loginType, name, username, psswrd, email):
+        return {
             "loginType": loginType,
             "fullname": name,
             "username": username,
             "psswrd": psswrd,
             "email": email
-     }
-    
+        }
+
     @staticmethod
     def add_storage_params(storageType):
-        return{
+        return {
             "storageType": storageType
         }
+
     @staticmethod
     def add_storage_body(name, locationType, mountPath, path, UNC_path, storageProtocol, saveFlag):
         return {
             "name": name,
             "locationType": [
                 locationType
-                ],
+            ],
             "mountPath": mountPath,
             "path": path,
             "UNC_path": UNC_path,
             "storageProtocol": storageProtocol,
             "saveFlag": saveFlag,
-                }
-    
+        }
+
     @staticmethod
     def fetch_storage_params(storageId):
         return {
             "storageId": storageId
         }
-    
+
     @staticmethod
     def convert_server_params(platformType):
         return {
             "platformType": platformType
         }
+
     @staticmethod
     def convert_server_body(optimServerName, optimDirectory, psthomePath, defaultQualifier, storageId):
         return {
@@ -73,21 +75,22 @@ class Payload:
             "defaultQualifier": defaultQualifier,
             "storageId": storageId
         }
-    
+
     @staticmethod
-    def query_server_params(catalogType:str,skip :bool,ssl):
+    def query_server_params(catalogType: str, skip: bool, ssl):
         return {
             "catalogType": catalogType,
             "skip": skip,
             "ssl": ssl
         }
+
     @staticmethod
-    def query_server_body(queryServerName,databaseName,host,port,username,psswrd):
+    def query_server_body(queryServerName: str, databaseName: str, host: str, port: str, username: str, psswrd: str):
         return {
             "queryServerName": queryServerName,
             "databaseName": databaseName,
             "host": host,
-            "port": port,
+            "port": str(port),
             "username": username,
             "psswrd": psswrd
         }

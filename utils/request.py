@@ -31,3 +31,16 @@ class request_call():
         url = f"{self.Base_url}/{endpoint}"
         post_response=requests.post(url=url,verify=False, json=json, headers=headers,params=params)
         return post_response
+    
+    def test_put_method(self, endpoint, json=None, headers=None, params=None):
+        # Read token from file
+        try:
+            with open("utils/Auth.txt", "r", encoding="utf-8") as f:
+                token = f.read().strip()
+        except FileNotFoundError as exc:
+            raise FileNotFoundError("Auth token not found. Run onboarding authentication test first.") from exc
+        
+        headers = headers or {"Authorization": token}
+        url = f"{self.Base_url}/{endpoint}"
+        put_response = requests.put(url=url, verify=False, json=json, headers=headers, params=params)
+        return put_response
