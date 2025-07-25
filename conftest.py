@@ -3,7 +3,7 @@ from datetime import datetime
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    report_dir = "reports"
+    report_dir = "Archive_viewer_API_Reports"
     now = datetime.now().strftime("%y-%m-%d_%H-%M-%S")
     config.option.htmlpath = f"{report_dir}/reports_{now}.html"
 
